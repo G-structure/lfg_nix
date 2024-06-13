@@ -14,10 +14,9 @@
     systems = [ "x86_64-linux" ];
     forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f { inherit system; });
   in {
-    homeConfigurations = forAllSystems { system }:
-      home-manager.lib.homeManagerConfiguration {
-        inherit (nixpkgs) system;
-        modules = [ ./home-manager/lfg.nix ];
-      };
+    homeConfigurations = forAllSystems (system: home-manager.lib.homeManagerConfiguration {
+      inherit (nixpkgs) system;
+      modules = [ ./home-manager/lfg.nix ];
+    });
   };
 }
