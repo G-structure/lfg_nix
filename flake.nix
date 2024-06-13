@@ -12,8 +12,9 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
+    pkgs = import nixpkgs {
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+    };
     in {
       homeConfigurations.ubuntu = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
