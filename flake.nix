@@ -10,13 +10,16 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager }:
     let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-    in {
-      homeConfigurations.ubuntu = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      systems = [ "x86_64-linux" ];
+      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f { inherit system; });
+    in
+    {
+      homeConfigurations = forAllSystems { system }:
+      home-manager.lib.homeManagerConfiguration {
+
+      inherit (nixpkgs) system;
 
         modules = [ ./home-manager/lfg.nix ];
       };
