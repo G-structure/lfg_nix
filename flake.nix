@@ -13,7 +13,7 @@
     homeConfigurations = {
       "ubuntu" = home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
-        homeDirectory = "/home/ubuntu"; # TODO: make this match your home directory
+        homeDirectory = "/home/ubuntu";
         username = "ubuntu";
         configuration.imports = [ ./home-manger/lfg.nix ];
       };
