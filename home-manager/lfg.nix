@@ -3,6 +3,7 @@
 imports = [];
    home.username = "ubuntu";
    home.homeDirectory = "/home/ubuntu";
+   home.stateVersion = "22.11";
 
   programs.home-manager.enable = true;
 
