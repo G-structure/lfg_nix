@@ -12,6 +12,7 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
+      homeStateVersion = "24.05";
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
