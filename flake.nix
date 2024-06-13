@@ -15,7 +15,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations.jdoe = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.ubuntu = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [ ./home-manager/lfg.nix ];
